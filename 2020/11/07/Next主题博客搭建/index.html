@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本文摘录自https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;96641789 博客搭建与配置环境准备- [node.js](https:&#x2F;&#x2F;nodejs.org&#x2F;zh-cn&#x2F;)   - [Git](https:&#x2F;&#x2F;git-scm.com&#x2F;)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Next 主题博客搭建">
+<meta property="og:url" content="http://example.com/2020/11/07/Next%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="上善若水">
+<meta property="og:description" content="本文摘录自https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;96641789 博客搭建与配置环境准备- [node.js](https:&#x2F;&#x2F;nodejs.org&#x2F;zh-cn&#x2F;)   - [Git](https:&#x2F;&#x2F;git-scm.com&#x2F;)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2020/11/07/Next%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/1.jpg">
+<meta property="article:published_time" content="2020-11-07T15:09:09.880Z">
+<meta property="article:modified_time" content="2020-11-07T16:55:25.284Z">
+<meta property="article:author" content="xinglunan">
+<meta property="article:tag" content="Next">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2020/11/07/Next%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/1.jpg">
+
+<link rel="canonical" href="http://example.com/2020/11/07/Next%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Next 主题博客搭建 | 上善若水</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+<link rel="alternate" href="/atom.xml" title="上善若水" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">上善若水</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">3</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+    
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+    
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/07/Next%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lu.gif">
+      <meta itemprop="name" content="xinglunan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="上善若水">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Next 主题博客搭建
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-07 23:09:09" itemprop="dateCreated datePublished" datetime="2020-11-07T23:09:09+08:00">2020-11-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-08 00:55:25" itemprop="dateModified" datetime="2020-11-08T00:55:25+08:00">2020-11-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="/2020/11/07/Next%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/1.jpg"><br>本文摘录自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/96641789">https://zhuanlan.zhihu.com/p/96641789</a></p>
+<h3 id="博客搭建与配置"><a href="#博客搭建与配置" class="headerlink" title="博客搭建与配置"></a>博客搭建与配置</h3><h5 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h5><pre><code>- [node.js](https://nodejs.org/zh-cn/)  
+- [Git](https://git-scm.com/)  </code></pre>
+<a id="more"></a>
+<h5 id="Hexo搭建"><a href="#Hexo搭建" class="headerlink" title="Hexo搭建"></a>Hexo搭建</h5><p>安装 Hexo， 打开Git Bash命令窗口，输入命令：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>如果安装Hexo时出现下载速度特别慢的情况，可以通过修改npm的安装源解决，这里选择：  淘宝 NPM 镜像，这是一个完整 npmjs.org 镜像，你可以用此代替官方版本(只读)，同步频率目前为 10分钟 一次以保证尽量与官方服务同步。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+<p>安装好 Hexo 后，在任意目录新建一个空文件夹，名字可以随便是啥，然后进入这个文件夹，在命令行输入命令：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<p>执行完成后（如果命令窗口出现橙色的 WARN 不用管,），生成文件结构：  </p>
+<figure class="highlight plain"><figcaption><span>node_modules</span><a target="_blank" rel="noopener" href="//依赖安装目录">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">├── scaffolds          &#x2F;&#x2F;模板文件夹，新建的文章将会从此目录下的文件中继承格式</span><br><span class="line">|   ├── draft.md         &#x2F;&#x2F;草稿模板</span><br><span class="line">|   ├── page.md          &#x2F;&#x2F;页面模板</span><br><span class="line">|   └── post.md          &#x2F;&#x2F;文章模板</span><br><span class="line">├── source             &#x2F;&#x2F;资源文件夹，用于放置图片、数据、文章等资源</span><br><span class="line">|   └── _posts           &#x2F;&#x2F;文章目录</span><br><span class="line">├── themes             &#x2F;&#x2F;主题文件夹</span><br><span class="line">|   └── landscape        &#x2F;&#x2F;默认主题</span><br><span class="line">├── .gitignore         &#x2F;&#x2F;指定不纳入git版本控制的文件</span><br><span class="line">├── _config.yml        &#x2F;&#x2F;站点配置文件</span><br><span class="line">├── db.json           </span><br><span class="line">├── package.json</span><br><span class="line">└── package-lock.json</span><br></pre></td></tr></table></figure>
+<p>下载依赖包， 输入命令：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>依赖包下载完成后，输入如下命令启动 hexo 的内置 Web 服务器：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g &#x2F;&#x2F;打包文件  </span><br><span class="line">   hexo s &#x2F;&#x2F;启动服务器  </span><br></pre></td></tr></table></figure>
+<p>然后可以在在浏览器中通过地址 <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> 访问博客了。   </p>
+<h4 id="更换Next主题"><a href="#更换Next主题" class="headerlink" title="更换Next主题"></a>更换Next主题</h4><p>Hexo 更换主题的方式很简单，只需要将主题文件拷贝至根目录下的 themes 目录中， 然后修改根目录下<code> _config.yml</code> 文件中的 theme 字段，便可完成更换。<br>在博客项目的根目录下，输入命令：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;hexo-theme-next.git themes&#x2F;next</span><br></pre></td></tr></table></figure>
+<p>打开根目录下 <code>_config.yml</code> 文件,将 theme 字段的值修改为 next。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Extensions</span><br><span class="line">## Plugins: https:&#x2F;&#x2F;hexo.io&#x2F;plugins&#x2F;</span><br><span class="line">## Themes: https:&#x2F;&#x2F;hexo.io&#x2F;themes&#x2F;</span><br><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+<p>这个时候需要重启服务器 <code>hexo g &amp;&amp; hexo s</code> 并刷新才能使主题生效。  </p>
+<h5 id="重要定义"><a href="#重要定义" class="headerlink" title="重要定义"></a>重要定义</h5><p>在项目文件中存在两个 <code>_config.yml</code> 文件，为了方便区分。  </p>
+<ul>
+<li>项目根目录下的 <code>_config.yml</code> 文件叫作<code>站点配置文件</code>。</li>
+<li>主题文件夹根目录下的 <code>themes/next/_config.yml</code> 文件叫作<code>主题配置文件</code>。  <h4 id="部署到GitHub-Pages"><a href="#部署到GitHub-Pages" class="headerlink" title="部署到GitHub Pages"></a>部署到GitHub Pages</h4><h5 id="Github配置"><a href="#Github配置" class="headerlink" title="Github配置"></a>Github配置</h5></li>
+<li>创建GitHub账号</li>
+<li>创建仓库，仓库名必须是: &lt;GitHub账号名称&gt;.github.io,这是GitHub pages 的特殊命名规范<h5 id="修改站点配置文件-config-yml"><a href="#修改站点配置文件-config-yml" class="headerlink" title="修改站点配置文件_config.yml"></a>修改站点配置文件_config.yml</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;deployment.html</span><br><span class="line">deploy:</span><br><span class="line"> 	  type: &#39;git&#39;</span><br><span class="line"> 	  repo: </span><br><span class="line">   	github: https:&#x2F;&#x2F;github.com&#x2F;yifanzheng&#x2F;yifanzheng.github.io.git</span><br><span class="line"> 	  branch: master</span><br></pre></td></tr></table></figure>
+<b>注意:</b> <code>GitHub pages</code>仅在<code>master</code>分支下实现  <h5 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h5></li>
+<li>在项目根目录下，安装 Git 部署插件:  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
+<li>部署到 Github Pages  ```<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+部署完成后，在浏览器访问网址：https://&lt;GitHub 账号名称&gt;.github.io 即可查看博客。<br>详细过程可以参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39510813/article/details/80216552">借助 GitHub pages 搭建静态个人网站并绑定域名</a>  <h4 id="站点配置"><a href="#站点配置" class="headerlink" title="站点配置"></a>站点配置</h4>站点配置可以查看 Hexo 官方文档。<br>Hexo 官方文档：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a><br><b>注意:</b>所有的<code>:</code>都为英文字符，后面必须有一个空格。  <h4 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h4>NexT 的主题配置可以先查看官方文档，写得很不错，很完善。很多配置都可以在官方文档中找到，如 文章字数统计，标签图标等。<br>NexT 官方文档：<a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/getting-started">http://theme-next.iissnan.com/getting-started</a><br>NexT （最新）官方文档：<a target="_blank" rel="noopener" href="https://theme-next.org/docs/getting-started/">https://theme-next.org/docs/getting-started/</a>    </li>
+</ul>
+<h4 id="使用-Gulp-压缩静态资源"><a href="#使用-Gulp-压缩静态资源" class="headerlink" title="使用 Gulp 压缩静态资源"></a>使用 Gulp 压缩静态资源</h4><p>Gulp 是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器。不仅能对网站的资源进行优化，并且能在开发过程中能够对很多重复的任务使其自动完成。  </p>
+<ul>
+<li>安装Gulp  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp -g</span><br></pre></td></tr></table></figure></li>
+<li>安装Gulp插件  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 安装功能模块</span><br><span class="line">npm install gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify gulp-imagemin --save</span><br><span class="line"></span><br><span class="line"># 额外的功能模块</span><br><span class="line">npm install gulp-debug gulp-clean-css gulp-changed gulp-if gulp-plumber gulp-babel babel-preset-es2015 del --save</span><br></pre></td></tr></table></figure>
+接下来在博客项目的根目录下新建 <code>gulpfile.js</code> 文件，并复制下面的内容到文件中：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line">var gulp &#x3D; require(&quot;gulp&quot;);</span><br><span class="line">var debug &#x3D; require(&quot;gulp-debug&quot;);</span><br><span class="line">var cleancss &#x3D; require(&quot;gulp-clean-css&quot;); &#x2F;&#x2F;css压缩组件</span><br><span class="line">var uglify &#x3D; require(&quot;gulp-uglify&quot;); &#x2F;&#x2F;js压缩组件</span><br><span class="line">var htmlmin &#x3D; require(&quot;gulp-htmlmin&quot;); &#x2F;&#x2F;html压缩组件</span><br><span class="line">var htmlclean &#x3D; require(&quot;gulp-htmlclean&quot;); &#x2F;&#x2F;html清理组件</span><br><span class="line">var imagemin &#x3D; require(&quot;gulp-imagemin&quot;); &#x2F;&#x2F;图片压缩组件</span><br><span class="line">var changed &#x3D; require(&quot;gulp-changed&quot;); &#x2F;&#x2F;文件更改校验组件</span><br><span class="line">var gulpif &#x3D; require(&quot;gulp-if&quot;); &#x2F;&#x2F;任务 帮助调用组件</span><br><span class="line">var plumber &#x3D; require(&quot;gulp-plumber&quot;); &#x2F;&#x2F;容错组件（发生错误不跳出任务，并报出错误内容）</span><br><span class="line">var isScriptAll &#x3D; true; &#x2F;&#x2F;是否处理所有文件，(true|处理所有文件)(false|只处理有更改的文件)</span><br><span class="line">var isDebug &#x3D; true; &#x2F;&#x2F;是否调试显示 编译通过的文件</span><br><span class="line">var gulpBabel &#x3D; require(&quot;gulp-babel&quot;);</span><br><span class="line">var es2015Preset &#x3D; require(&quot;babel-preset-es2015&quot;);</span><br><span class="line">var del &#x3D; require(&quot;del&quot;);</span><br><span class="line">var Hexo &#x3D; require(&quot;hexo&quot;);</span><br><span class="line">var hexo &#x3D; new Hexo(process.cwd(), &#123;&#125;); &#x2F;&#x2F; 初始化一个hexo对象</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 清除public文件夹</span><br><span class="line">gulp.task(&quot;clean&quot;, function() &#123;</span><br><span class="line">  return del([&quot;public&#x2F;**&#x2F;*&quot;]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 下面几个跟hexo有关的操作，主要通过hexo.call()去执行，注意return</span><br><span class="line">&#x2F;&#x2F; 创建静态页面 （等同 hexo generate）</span><br><span class="line">gulp.task(&quot;generate&quot;, function() &#123;</span><br><span class="line">  return hexo.init().then(function() &#123;</span><br><span class="line">    return hexo</span><br><span class="line">      .call(&quot;generate&quot;, &#123;</span><br><span class="line">        watch: false</span><br><span class="line">      &#125;)</span><br><span class="line">      .then(function() &#123;</span><br><span class="line">        return hexo.exit();</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(function(err) &#123;</span><br><span class="line">        return hexo.exit(err);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 启动Hexo服务器</span><br><span class="line">gulp.task(&quot;server&quot;, function() &#123;</span><br><span class="line">  return hexo</span><br><span class="line">    .init()</span><br><span class="line">    .then(function() &#123;</span><br><span class="line">      return hexo.call(&quot;server&quot;, &#123;&#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(function(err) &#123;</span><br><span class="line">      console.log(err);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 部署到服务器</span><br><span class="line">gulp.task(&quot;deploy&quot;, function() &#123;</span><br><span class="line">  return hexo.init().then(function() &#123;</span><br><span class="line">    return hexo</span><br><span class="line">      .call(&quot;deploy&quot;, &#123;</span><br><span class="line">        watch: false</span><br><span class="line">      &#125;)</span><br><span class="line">      .then(function() &#123;</span><br><span class="line">        return hexo.exit();</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(function(err) &#123;</span><br><span class="line">        return hexo.exit(err);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 压缩public目录下的js文件</span><br><span class="line">gulp.task(&quot;compressJs&quot;, function() &#123;</span><br><span class="line">  return gulp</span><br><span class="line">    .src([&quot;.&#x2F;public&#x2F;**&#x2F;*.js&quot;, &quot;!.&#x2F;public&#x2F;libs&#x2F;**&quot;]) &#x2F;&#x2F;排除的js</span><br><span class="line">    .pipe(gulpif(!isScriptAll, changed(&quot;.&#x2F;public&quot;)))</span><br><span class="line">    .pipe(gulpif(isDebug, debug(&#123; title: &quot;Compress JS:&quot; &#125;)))</span><br><span class="line">    .pipe(plumber())</span><br><span class="line">    .pipe(</span><br><span class="line">      gulpBabel(&#123;</span><br><span class="line">        presets: [es2015Preset] &#x2F;&#x2F; es5检查机制</span><br><span class="line">      &#125;)</span><br><span class="line">    )</span><br><span class="line">    .pipe(uglify()) &#x2F;&#x2F;调用压缩组件方法uglify(),对合并的文件进行压缩</span><br><span class="line">    .pipe(gulp.dest(&quot;.&#x2F;public&quot;)); &#x2F;&#x2F;输出到目标目录</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 压缩public目录下的css文件</span><br><span class="line">gulp.task(&quot;compressCss&quot;, function() &#123;</span><br><span class="line">  var option &#x3D; &#123;</span><br><span class="line">    rebase: false,</span><br><span class="line">    &#x2F;&#x2F;advanced: true,               &#x2F;&#x2F;类型：Boolean 默认：true [是否开启高级优化（合并选择器等）]</span><br><span class="line">    compatibility: &quot;ie7&quot; &#x2F;&#x2F;保留ie7及以下兼容写法 类型：String 默认：&#39;&#39;or&#39;*&#39; [启用兼容模式； &#39;ie7&#39;：IE7兼容模式，&#39;ie8&#39;：IE8兼容模式，&#39;*&#39;：IE9+兼容模式]</span><br><span class="line">    &#x2F;&#x2F;keepBreaks: true,             &#x2F;&#x2F;类型：Boolean 默认：false [是否保留换行]</span><br><span class="line">    &#x2F;&#x2F;keepSpecialComments: &#39;*&#39;      &#x2F;&#x2F;保留所有特殊前缀 当你用autoprefixer生成的浏览器前缀，如果不加这个参数，有可能将会删除你的部分前缀</span><br><span class="line">  &#125;;</span><br><span class="line">  return gulp</span><br><span class="line">    .src([&quot;.&#x2F;public&#x2F;**&#x2F;*.css&quot;, &quot;!.&#x2F;public&#x2F;**&#x2F;*.min.css&quot;]) &#x2F;&#x2F;排除的css</span><br><span class="line">    .pipe(gulpif(!isScriptAll, changed(&quot;.&#x2F;public&quot;)))</span><br><span class="line">    .pipe(gulpif(isDebug, debug(&#123; title: &quot;Compress CSS:&quot; &#125;)))</span><br><span class="line">    .pipe(plumber())</span><br><span class="line">    .pipe(cleancss(option))</span><br><span class="line">    .pipe(gulp.dest(&quot;.&#x2F;public&quot;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 压缩public目录下的html文件</span><br><span class="line">gulp.task(&quot;compressHtml&quot;, function() &#123;</span><br><span class="line">  var cleanOptions &#x3D; &#123;</span><br><span class="line">    protect: &#x2F;&lt;\!--%fooTemplate\b.*?%--&gt;&#x2F;g, &#x2F;&#x2F;忽略处理</span><br><span class="line">    unprotect: &#x2F;&lt;script [^&gt;]*\btype&#x3D;&quot;text\&#x2F;x-handlebars-template&quot;[\s\S]+?&lt;\&#x2F;script&gt;&#x2F;gi &#x2F;&#x2F;特殊处理</span><br><span class="line">  &#125;;</span><br><span class="line">  var minOption &#x3D; &#123;</span><br><span class="line">    collapseWhitespace: true, &#x2F;&#x2F;压缩HTML</span><br><span class="line">    collapseBooleanAttributes: true, &#x2F;&#x2F;省略布尔属性的值  &lt;input checked&#x3D;&quot;true&quot;&#x2F;&gt; &#x3D;&#x3D;&gt; &lt;input &#x2F;&gt;</span><br><span class="line">    removeEmptyAttributes: true, &#x2F;&#x2F;删除所有空格作属性值    &lt;input id&#x3D;&quot;&quot; &#x2F;&gt; &#x3D;&#x3D;&gt; &lt;input &#x2F;&gt;</span><br><span class="line">    removeScriptTypeAttributes: true, &#x2F;&#x2F;删除&lt;script&gt;的type&#x3D;&quot;text&#x2F;javascript&quot;</span><br><span class="line">    removeStyleLinkTypeAttributes: true, &#x2F;&#x2F;删除&lt;style&gt;和&lt;link&gt;的type&#x3D;&quot;text&#x2F;css&quot;</span><br><span class="line">    removeComments: true, &#x2F;&#x2F;清除HTML注释</span><br><span class="line">    minifyJS: true, &#x2F;&#x2F;压缩页面JS</span><br><span class="line">    minifyCSS: true, &#x2F;&#x2F;压缩页面CSS</span><br><span class="line">    minifyURLs: true &#x2F;&#x2F;替换页面URL</span><br><span class="line">  &#125;;</span><br><span class="line">  return gulp</span><br><span class="line">    .src(&quot;.&#x2F;public&#x2F;**&#x2F;*.html&quot;)</span><br><span class="line">    .pipe(gulpif(isDebug, debug(&#123; title: &quot;Compress HTML:&quot; &#125;)))</span><br><span class="line">    .pipe(plumber())</span><br><span class="line">    .pipe(htmlclean(cleanOptions))</span><br><span class="line">    .pipe(htmlmin(minOption))</span><br><span class="line">    .pipe(gulp.dest(&quot;.&#x2F;public&quot;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 压缩 public&#x2F;uploads 目录内图片</span><br><span class="line">gulp.task(&quot;compressImage&quot;, function() &#123;</span><br><span class="line">  var option &#x3D; &#123;</span><br><span class="line">    optimizationLevel: 5, &#x2F;&#x2F;类型：Number  默认：3  取值范围：0-7（优化等级）</span><br><span class="line">    progressive: true, &#x2F;&#x2F;类型：Boolean 默认：false 无损压缩jpg图片</span><br><span class="line">    interlaced: false, &#x2F;&#x2F;类型：Boolean 默认：false 隔行扫描gif进行渲染</span><br><span class="line">    multipass: false &#x2F;&#x2F;类型：Boolean 默认：false 多次优化svg直到完全优化</span><br><span class="line">  &#125;;</span><br><span class="line">  return gulp</span><br><span class="line">    .src(&quot;.&#x2F;public&#x2F;medias&#x2F;**&#x2F;*.*&quot;)</span><br><span class="line">    .pipe(gulpif(!isScriptAll, changed(&quot;.&#x2F;public&#x2F;medias&quot;)))</span><br><span class="line">    .pipe(gulpif(isDebug, debug(&#123; title: &quot;Compress Images:&quot; &#125;)))</span><br><span class="line">    .pipe(plumber())</span><br><span class="line">    .pipe(imagemin(option))</span><br><span class="line">    .pipe(gulp.dest(&quot;.&#x2F;public&quot;));</span><br><span class="line">&#125;);</span><br><span class="line">&#x2F;&#x2F; 执行顺序： 清除public目录 -&gt; 产生原始博客内容 -&gt; 执行压缩混淆 -&gt; 部署到服务器</span><br><span class="line">gulp.task(</span><br><span class="line">  &quot;build&quot;,</span><br><span class="line">  gulp.series(</span><br><span class="line">    &quot;clean&quot;,</span><br><span class="line">    &quot;generate&quot;,</span><br><span class="line">    &quot;compressHtml&quot;,</span><br><span class="line">    &quot;compressCss&quot;,</span><br><span class="line">    &quot;compressJs&quot;,</span><br><span class="line">    &quot;compressImage&quot;,</span><br><span class="line">    gulp.parallel(&quot;deploy&quot;)</span><br><span class="line">  )</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 默认任务</span><br><span class="line">gulp.task(</span><br><span class="line">  &quot;default&quot;,</span><br><span class="line">  gulp.series(</span><br><span class="line">    &quot;clean&quot;,</span><br><span class="line">    &quot;generate&quot;,</span><br><span class="line">    gulp.parallel(&quot;compressHtml&quot;, &quot;compressCss&quot;, &quot;compressImage&quot;, &quot;compressJs&quot;)</span><br><span class="line">  )</span><br><span class="line">);</span><br><span class="line">&#x2F;&#x2F;Gulp4最大的一个改变就是gulp.task函数现在只支持两个参数，分别是任务名和运行任务的函数  </span><br></pre></td></tr></table></figure>
+以后在部署时，只需要每次在执行 generate 命令后执行 gulp 就可以实现对静态资源的压缩，压缩完成后执行 deploy 命令同步到服务器：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">gulp</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+更多第三方功能安装详见Hexo官方文档</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Next/" rel="tag"># Next</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/04/markdown%E6%95%99%E7%A8%8B/" rel="prev" title="Markdown教程">
+      <i class="fa fa-chevron-left"></i> Markdown教程
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+    
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+    
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-text">博客搭建与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Hexo%E6%90%AD%E5%BB%BA"><span class="nav-text">Hexo搭建</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2Next%E4%B8%BB%E9%A2%98"><span class="nav-text">更换Next主题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%8D%E8%A6%81%E5%AE%9A%E4%B9%89"><span class="nav-text">重要定义</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0GitHub-Pages"><span class="nav-text">部署到GitHub Pages</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Github%E9%85%8D%E7%BD%AE"><span class="nav-text">Github配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-config-yml"><span class="nav-text">修改站点配置文件_config.yml</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2"><span class="nav-text">部署</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE"><span class="nav-text">站点配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-text">主题配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Gulp-%E5%8E%8B%E7%BC%A9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90"><span class="nav-text">使用 Gulp 压缩静态资源</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+    
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xinglunan"
+      src="/images/lu.gif">
+  <p class="site-author-name" itemprop="name">xinglunan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+    
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1461402904&auto=1&height=66"></iframe>
+    
+    </div>
+
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+    
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xinglunan</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+
+```
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共4.5k字</span>
+</div>
+```
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+</body>
+</html>

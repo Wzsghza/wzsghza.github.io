@@ -316,9 +316,9 @@ td {
   border: 2px solid var(--btn-default-border-color);
   border-radius: 0;
   color: var(--btn-default-color);
-  display: inline-block;
+  display: inline-black;
   font-size: 0.875em;
-  line-height: 2;
+  line-height: 3;
   padding: 0 20px;
   text-decoration: none;
   transition-property: background-color;
@@ -1165,7 +1165,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #98dfb6;
+  background: #ff9de2;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
