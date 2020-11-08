@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo博客图片</title>
-    <url>/2020/11/08/Hexo%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/</url>
-    <content><![CDATA[<p>文章转载自<a href="https://blog.csdn.net/u012874859/article/details/108530333">https://blog.csdn.net/u012874859/article/details/108530333</a>  </p>
-<h4 id="插入网络图片"><a href="#插入网络图片" class="headerlink" title="插入网络图片"></a>插入网络图片</h4><p>可以用常用的markdown的方式插入:<code>![img-title](img-url)</code> </p>
-<h4 id="插入本地图片"><a href="#插入本地图片" class="headerlink" title="插入本地图片"></a>插入本地图片</h4><ul>
-<li>安装插件: 在博客的根目录下执行：<br><code>npm install hexo-asset-image --save 或npm install hexo-asset-image --g</code></li>
-<li>修改站点配置文件<code>_config.yml</code>： 找到 <code>post_asset_folder</code>，把值改成<code> true</code>，这样在执行<code>hexo new page</code> 的时候，会在<code>source/_posts</code>文件夹下生成一个和page同名的文件夹，可以存放该page中用到的图片</li>
-<li>插入本地图片<code>![imageTitle](img.jpg)</code></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Next</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>分类与标签</title>
     <url>/2020/11/08/Hexo%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%E5%8F%8A%E6%A0%87%E7%AD%BE/</url>
     <content><![CDATA[<p>文章转载自<a href="https://www.jianshu.com/p/e17711e44e00">https://www.jianshu.com/p/e17711e44e00</a>  </p>
@@ -48,6 +30,42 @@
       <tags>
         <tag>Next</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客图片</title>
+    <url>/2020/11/08/Hexo%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/</url>
+    <content><![CDATA[<p>文章转载自<a href="https://blog.csdn.net/u012874859/article/details/108530333">https://blog.csdn.net/u012874859/article/details/108530333</a>  </p>
+<h4 id="插入网络图片"><a href="#插入网络图片" class="headerlink" title="插入网络图片"></a>插入网络图片</h4><p>可以用常用的markdown的方式插入:<code>![img-title](img-url)</code> </p>
+<h4 id="插入本地图片"><a href="#插入本地图片" class="headerlink" title="插入本地图片"></a>插入本地图片</h4><ul>
+<li>安装插件: 在博客的根目录下执行：<br><code>npm install hexo-asset-image --save 或npm install hexo-asset-image --g</code></li>
+<li>修改站点配置文件<code>_config.yml</code>： 找到 <code>post_asset_folder</code>，把值改成<code> true</code>，这样在执行<code>hexo new page</code> 的时候，会在<code>source/_posts</code>文件夹下生成一个和page同名的文件夹，可以存放该page中用到的图片</li>
+<li>插入本地图片<code>![imageTitle](img.jpg)</code></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/11/03/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>Next 主题博客搭建</title>
@@ -104,24 +122,6 @@
       <tags>
         <tag>Next</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2020/11/03/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>Markdown教程</title>
@@ -294,6 +294,103 @@ _   下划线
       </categories>
       <tags>
         <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python安装及环境搭建</title>
+    <url>/2020/11/08/python%E5%AE%89%E8%A3%85%E5%8F%8A%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<p>python官网：<a href="https://www.python/">https://www.python</a>.<br>Python文档下载地址：<a href="https://www.python.org/doc/">https://www.python.org/doc/</a></p>
+<a id="more"></a>  
+
+<h4 id="Python安装"><a href="#Python安装" class="headerlink" title="Python安装"></a>Python安装</h4><h6 id="Unix-amp-Linux平台安装Python"><a href="#Unix-amp-Linux平台安装Python" class="headerlink" title="Unix&amp;Linux平台安装Python"></a>Unix&amp;Linux平台安装Python</h6><blockquote>
+<p>打开Web浏览器访问<a href="https://www.python.org/downloads/sources/">https://www.python.org/downloads/sources/</a><br>选择使用于Unix/Linux的源码压缩包<br>下载及解压压缩包<br>如果你需要自定义一些选项修改Modules/Setup<br>执行 ./configure<br>make<br>make install  </p>
+</blockquote>
+<p>完成以上操作后，Python会安装在/usr/local/bin目录中，Python库安装在/usr/local/lib/pythonXX，XX为你使用的Python的版本号。</p>
+<h6 id="Windows平台安装Python"><a href="#Windows平台安装Python" class="headerlink" title="Windows平台安装Python"></a>Windows平台安装Python</h6><blockquote>
+<p>打开 Web浏览器访问<a href="https://www.python.org/downloads/windows/">https://www.python.org/downloads/windows/</a><br>在下载列表中选择Windows平添安装包，包格式为：python-XYZ.msi文件，XYZ为你要安装的版本号。<br>要使用安装程序python-XYZ.msi，Windows系统必须支持Microsoft Installer 2.0搭配使用。只要保存安装文件到本地计算机，然后运行它，看看你的机器支持msi。Windows xp和更高版本已经有msi，很多老机器也可以安装msi。<br>下载后，双击安装包，进入python安装向导，安装非常简单，你只需要使用默认的设置一直点击“下一步”知道安装完成即可。  </p>
+</blockquote>
+<p>注：mac下载安装教程受个人情况影响暂不做笔记。</p>
+<h4 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h4><h6 id="非Windows平台"><a href="#非Windows平台" class="headerlink" title="非Windows平台"></a>非Windows平台</h6><blockquote>
+<p>在csh shell：输入<br>setenv PATH “$PATH:/usr/local/bin/python”<br>按下enter。<br>在bash shell(linux):输入<br>export PATH=”$PATH:/usr/local/bin/python”<br>按下enter。<br>在sh或者ksh shell： 输入<br>PATH=”$PATH:/usr/local/bin/python”<br>按下enter。  </p>
+</blockquote>
+<p>注意：/usr/local/bin/python 是Python的安装目录。</p>
+<h6 id="在Windows设置环境变量"><a href="#在Windows设置环境变量" class="headerlink" title="在Windows设置环境变量"></a>在Windows设置环境变量</h6><blockquote>
+<p>右键点击“计算机”，然后点击“属性”<br>点击“高级系统设置”<br>选择“系统变量”窗口下面的“Path”，双击即可<br>在“Path”行，添加python安装路径即可。<br>ps：路径直接用分号“；”隔开<br>设置成功后，在cmd命令行，输入命令“python”，就可以有相关显示。  </p>
+</blockquote>
+<h4 id="python环境变量"><a href="#python环境变量" class="headerlink" title="python环境变量"></a>python环境变量</h4><p>下面几个重要的环境变量，他应用于python：  </p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PYTHONPATH</td>
+<td>PYTHONPATH是python搜索路径，默认我们import的模块都会从PYTHONPATH里面寻找</td>
+</tr>
+<tr>
+<td>PYTHONSTARTUP</td>
+<td>python启动后，先寻找PYTHONSTARTUP环境变量，然后执行此变量指定的文件中的代码。</td>
+</tr>
+<tr>
+<td>PYTHONCASEOK</td>
+<td>加入PYTHONCASEOK的环境变量，就会使python导入模块时不区分大小写</td>
+</tr>
+<tr>
+<td>PYTHONHOME</td>
+<td>另一种模块搜索路径。它通常内嵌于PYTHONSTARTUP或PYTHONPATH目录中，收两个模块库更容易切换。</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="运行python"><a href="#运行python" class="headerlink" title="运行python"></a>运行python</h4><p>有三种方式可以运行python：</p>
+<h6 id="1、交互式解释器"><a href="#1、交互式解释器" class="headerlink" title="1、交互式解释器"></a>1、交互式解释器</h6><p>你可以通过命令行窗口进入python，并在交互式解释器中开始编写python代码。你可以在unix、dos或其他提供了命令行或者shell的系统进行python代码工作。<br>以下为命令行参数：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-d</td>
+<td>在解析时显示调试信息</td>
+</tr>
+<tr>
+<td>-O</td>
+<td>生成优化代码（.pyo文件）</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>启动时不引入查找python路劲的位置</td>
+</tr>
+<tr>
+<td>-V</td>
+<td>输出python版本号</td>
+</tr>
+<tr>
+<td>-X</td>
+<td>从1.6版本之后基于内建的异常(仅仅用于字符串)已过时</td>
+</tr>
+<tr>
+<td>-c cmd</td>
+<td>执行python脚本，并将运行结果作为cmd字符串</td>
+</tr>
+<tr>
+<td>file</td>
+<td>在给定的python文件执行python脚本</td>
+</tr>
+</tbody></table>
+<h6 id="2、命令行脚本"><a href="#2、命令行脚本" class="headerlink" title="2、命令行脚本"></a>2、命令行脚本</h6><p>在你看的应用程序中通过引入解释器可以在命令行执行python脚本，如下所示：</p>
+<figure class="highlight plain"><figcaption><span>python script.py # Unix/Linux</span></figcaption><table><tr><td class="code"><pre><span class="line">或者</span><br><span class="line">C:&gt;python script.py # Windows&#x2F;DOS</span><br><span class="line">**注意：**在执行脚本是，请检查脚本是否有可执行权限。</span><br></pre></td></tr></table></figure>
+<h6 id="3、集成开发环境（IDE：Integrated-Development-Environment-PyCharm"><a href="#3、集成开发环境（IDE：Integrated-Development-Environment-PyCharm" class="headerlink" title="3、集成开发环境（IDE：Integrated Development Environment) : PyCharm"></a>3、集成开发环境（IDE：Integrated Development Environment) : PyCharm</h6><p>Pycharm是由JetBrains打造的一款Python IDE，支持mac os、windows、linux系统。</p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
 </search>
