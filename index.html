@@ -190,6 +190,82 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/12/Java-super%E7%9B%B8%E5%85%B3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lu.gif">
+      <meta itemprop="name" content="xinglunan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="上善若水">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/12/Java-super%E7%9B%B8%E5%85%B3/" class="post-title-link" itemprop="url">Java:super相关</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-12 10:26:49 / 修改时间：11:56:02" itemprop="dateCreated datePublished" datetime="2020-11-12T10:26:49+08:00">2020-11-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>转载自： <a target="_blank" rel="noopener" href="https://blog.csdn.net/yongbutingxide/article/details/82669054">https://blog.csdn.net/yongbutingxide/article/details/82669054</a></p>
+<h4 id="子类重写父类的方法"><a href="#子类重写父类的方法" class="headerlink" title="子类重写父类的方法"></a>子类重写父类的方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class A&#123;</span><br><span class="line">    String a &#x3D; &quot;调用了父类A中的check方法&quot;;</span><br><span class="line">    public void getA()&#123;</span><br><span class="line">        System.out.println(this.a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class B extends A</span><br><span class="line">&#123;</span><br><span class="line">    String a &#x3D; &quot;调用了子类B中的check方法&quot;;</span><br><span class="line">    public void getA()&#123;</span><br><span class="line">        System.out.println(this.a);</span><br><span class="line">    &#125;</span><br><span class="line">    public void check()&#123;</span><br><span class="line">    	getA();</span><br><span class="line">        super.getA();</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String args[])&#123;</span><br><span class="line">        B b &#x3D; new B();</span><br><span class="line">        b.getA();</span><br><span class="line">        b.check();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/11/12/Java-super%E7%9B%B8%E5%85%B3/1.jpg"><br>结果分析：<br>在子类B中重写了getA()方法，在子类的check()方法中进行是否通过super方法调用getA()方法，可以发现，使用super调用getA时，所调用的是主类A中的getA方法。<br>当需要在子类中调用已经被隐藏的父类方法时必须使用super关键字进行标识。<br>如果在重写的方法中调用父类已经被隐藏的方法时未使用super关键字标识，会出现java.lang.StackOverflowError异常。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public void getA()&#123;</span><br><span class="line">        System.out.println(this.a);</span><br><span class="line">        getA();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/11/12/Java-super%E7%9B%B8%E5%85%B3/2.jpg"></p>
+<h4 id="子类重写父类变量"><a href="#子类重写父类变量" class="headerlink" title="子类重写父类变量"></a>子类重写父类变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class A&#123;</span><br><span class="line">    String a &#x3D; &quot;调用了父类A中的check方法&quot;;</span><br><span class="line">&#125;</span><br><span class="line">class B extends A</span><br><span class="line">&#123;</span><br><span class="line">    String a &#x3D; &quot;调用了子类B中的check方法&quot;;</span><br><span class="line">    public void check()&#123;</span><br><span class="line">        System.out.println(a);</span><br><span class="line">        System.out.println(super.a);</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String args[])&#123;</span><br><span class="line">        B b &#x3D; new B();</span><br><span class="line">        b.check();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：不能通过super去访问父类中的private变量。<br><img src="/2020/11/12/Java-super%E7%9B%B8%E5%85%B3/3.jpg">  </p>
+<h4 id="在子类的构造方法中"><a href="#在子类的构造方法中" class="headerlink" title="在子类的构造方法中"></a>在子类的构造方法中</h4><p>编译器会自动在子类构造函数的第一句加上 super(); 来调用父类的无参构造器；此时可以省略不写。如果想写上的话必须在子类构造函数的第一句，可以通过super来调用父类其他重载的构造方法，只要相应的把参数传过去就好。  </p>
+<h4 id="关于构造方法中的super"><a href="#关于构造方法中的super" class="headerlink" title="关于构造方法中的super"></a>关于构造方法中的super</h4><h5 id="编译不通过"><a href="#编译不通过" class="headerlink" title="编译不通过"></a>编译不通过</h5><p>如果父类中定义了有参构造函数，而子类中没有写任何的构造方法，JVM会给子类生成一个默认的无参构造方法。在继承关系中，由于在子类的构造方法中，第一条语句默认为调用父类的无参构造方法（即默认为super()，一般这句话省略了）。所以当在父类中定义了有参构造函数，但是没有定义无参构造函数时，IDE会强制要求我们在子类的构造函数中使用super并给出父类有参构造函数所需要的参数。<br>（在子类的构造方法中，只要里面没有显示的通过super去调用父类相应的构造方法，默认都是调用super()，即无参构造方法，因此要确保父类有相应的构造方法。）  </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/08/Hexo%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -350,81 +426,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/08/python%E5%AE%89%E8%A3%85%E5%8F%8A%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/lu.gif">
-      <meta itemprop="name" content="xinglunan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="上善若水">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/08/python%E5%AE%89%E8%A3%85%E5%8F%8A%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="post-title-link" itemprop="url">Python安装及环境搭建</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-11-08 00:00:00 / 修改时间：17:28:21" itemprop="dateCreated datePublished" datetime="2020-11-08T00:00:00+08:00">2020-11-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>python官网：<a target="_blank" rel="noopener" href="https://www.python/">https://www.python</a>.<br>Python文档下载地址：<a target="_blank" rel="noopener" href="https://www.python.org/doc/">https://www.python.org/doc/</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/08/python%E5%AE%89%E8%A3%85%E5%8F%8A%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/07/Next%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -540,7 +541,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-08 17:30:48" itemprop="dateModified" datetime="2020-11-08T17:30:48+08:00">2020-11-08</time>
+                <time title="修改时间：2020-11-18 22:20:23" itemprop="dateModified" datetime="2020-11-18T22:20:23+08:00">2020-11-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -563,7 +564,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="一-Markdown标题"><a href="#一-Markdown标题" class="headerlink" title="一.Markdown标题"></a>一.Markdown标题</h4><p>Markdown 标题有两种格式。  </p>
+          <p>转载自<a target="_blank" rel="noopener" href="https://www.runoob.com/markdown/md-tutorial.html">https://www.runoob.com/markdown/md-tutorial.html</a></p>
+<h4 id="一-Markdown标题"><a href="#一-Markdown标题" class="headerlink" title="一.Markdown标题"></a>一.Markdown标题</h4><p>Markdown 标题有两种格式。  </p>
 <h5 id="1-使用-和-标记一级和二级标题"><a href="#1-使用-和-标记一级和二级标题" class="headerlink" title="1.使用 = 和 - 标记一级和二级标题"></a>1.使用 = 和 - 标记一级和二级标题</h5><p>= 和 - 标记语法结构如下：  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">我展示的是一级标题</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br></pre></td></tr></table></figure>
 
@@ -786,7 +788,7 @@
 ```
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共6.2k字</span>
+  <span class="post-count">博客全站共6k字</span>
 </div>
 ```
         
